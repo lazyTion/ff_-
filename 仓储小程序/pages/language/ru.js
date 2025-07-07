@@ -1,6 +1,33 @@
 export default {
     login:"Складской апплет",
 	loginTitle: 'Войти',
+	
+	// 页面标题
+	pageTitle: {
+		warehouseManagement: "Управление складом Лунцзян",
+		exceptionAdd: "Добавить исключение",
+		exceptionList: "Список исключений",
+		loadingQuery: "Запрос погрузки/разгрузки",
+		detailInfo: "Подробная информация",
+		palletHandling: "Обработка поддонов",
+		reweigh: "Повторное взвешивание",
+		adjustHandling: "Обработка корректировок",
+		warehouseHandling: "Складские операции",
+		returnCar: "Возврат автомобиля",
+		factoryVehicleQuery: "Запрос транспорта на заводе",
+		testResult: "Результаты испытаний",
+		rfidOperation: "Операции RFID",
+		rfidCheck: "Проверка RFID",
+		rfidBindNonWeighing: "Привязка RFID без взвешивания",
+		rfidException: "Исключения RFID",
+		rfidVehicleDetail: "Детали транспорта RFID",
+		tempVehicleReg: "Регистрация временного транспорта",
+		transferMark: "Маркировка перевозки",
+		qrCodeQuery: "Запрос QR-кода",
+		tempVehicleView: "Просмотр временного транспорта",
+		secondCheck: "Вторичная проверка",
+		resetPassword: "Изменить пароль"
+	},
 	usernamePlaceholder: 'Пожалуйста, введите имя пользователя',
 	passwordPlaceholder: 'Пожалуйста, введите ваш пароль',
 	rememberPwd: 'Запомнить пароль',

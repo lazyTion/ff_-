@@ -25,6 +25,7 @@
    import vTable from "@/components/no-bad-table/table.vue"
  import zh from '../language/zh.js';
  import ru from '../language/ru.js';
+ import { setPageTitle } from '@/utils/i18n.js';
    export default {
        components: {
            MxDatePicker,
@@ -41,10 +42,17 @@
 			}
 
        },
+	   onShow() {
+		   // 每次页面显示时检查语言设置
+		   this.currentLang = uni.getStorageSync('lang') || 'zh';
+		   this.lang = this.currentLang === 'zh' ? zh : ru;
+		   setPageTitle('pageTitle.exceptionList', this.lang);
+	   },
 	   onLoad: function (options) {
 	          var that = this;
 	   this.currentLang = uni.getStorageSync('lang') || 'zh';
 	   	this.lang = this.currentLang === 'zh' ? zh : ru;
+		   setPageTitle('pageTitle.exceptionList', this.lang);
 	           var name = uni.getStorageSync("name");
 	           var se = uni.getStorageSync("sessionid");
 	   		if (se == '') {

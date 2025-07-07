@@ -170,6 +170,7 @@
 	import uniListItem from '@/components/uni-list-item/uni-list-item.vue'
 	import zh from '../language/zh.js';
 	import ru from '../language/ru.js';
+	import { setPageTitle } from '@/utils/i18n.js';
 	
 	export default { 
 		components: {
@@ -288,11 +289,18 @@
 				}
 			}
 		},
+		onShow() {
+			// 每次页面显示时检查语言设置
+			this.currentLang = uni.getStorageSync('lang') || 'zh';
+			this.lang = this.currentLang === 'zh' ? zh : ru;
+			setPageTitle('pageTitle.palletHandling', this.lang);
+		},
 		onLoad: function (options) {
            var that = this;
 		// 初始化语言
 			this.currentLang = uni.getStorageSync('lang') || 'zh';
 			this.lang = this.currentLang === 'zh' ? zh : ru;
+			setPageTitle('pageTitle.palletHandling', this.lang);
 			
             var name = uni.getStorageSync("name");
             var se = uni.getStorageSync("sessionid");

@@ -60,6 +60,7 @@
 	var graceChecker = require("@/common/graceChecker.js");
 	import zh from '../language/zh.js';
 	import ru from '../language/ru.js';
+	import { setPageTitle } from '@/utils/i18n.js';
 
 	export default {
 		components: {
@@ -81,15 +82,22 @@
 			}
 
 		},
+		onShow() {
+			// 每次页面显示时检查语言设置
+			this.currentLang = uni.getStorageSync('lang') || 'zh';
+			this.lang = this.currentLang === 'zh' ? zh : ru;
+			setPageTitle('pageTitle.resetPassword', this.lang);
+		},
 		onLoad: function(options) {
 			var that = this;
-		this.currentLang = uni.getStorageSync('lang') || 'zh';
+			this.currentLang = uni.getStorageSync('lang') || 'zh';
 			this.lang = this.currentLang === 'zh' ? zh : ru;
+			setPageTitle('pageTitle.resetPassword', this.lang);
 			var name = uni.getStorageSync("name");
 			var pwd = uni.getStorageSync("pwd");
 			console.log(pwd);
 			console.log(name);
-},
+		},
 		methods: {
 			getempty: function() {
 				var that = this;

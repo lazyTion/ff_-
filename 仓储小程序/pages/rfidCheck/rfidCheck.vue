@@ -58,6 +58,7 @@
 	// 导入语言资源
 	import zh from '../language/zh.js';
 	import ru from '../language/ru.js';
+	import { setPageTitle } from '@/utils/i18n.js';
 
 	export default {
 		components: {
@@ -79,6 +80,12 @@
 				lang: zh // 语言资源对象
 			}
 		},
+		onShow() {
+			// 每次页面显示时检查语言设置
+			this.currentLang = uni.getStorageSync('lang') || 'zh';
+			this.lang = this.currentLang === 'zh' ? zh : ru;
+			setPageTitle('pageTitle.rfidCheck', this.lang);
+		},
 		onLoad: function(options) {
 			var that = this;
 			that.getempty();
@@ -86,6 +93,7 @@
 			// 初始化语言
 			this.currentLang = uni.getStorageSync('lang') || 'zh';
 			this.lang = this.currentLang === 'zh' ? zh : ru;
+			setPageTitle('pageTitle.rfidCheck', this.lang);
 		},
 		methods: {
 			getempty: function() {

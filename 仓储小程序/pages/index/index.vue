@@ -95,6 +95,10 @@
 			// 每次页面显示时检查语言设置
 			this.currentLang = uni.getStorageSync('lang') || 'zh';
 			this.lang = this.currentLang === 'zh' ? zh : ru;
+			// 设置页面标题
+			uni.setNavigationBarTitle({
+				title: this.lang.pageTitle.warehouseManagement
+			});
 		},
 
 		onLoad: function(options) {
@@ -107,6 +111,10 @@
 			// 初始化语言
 			this.currentLang = uni.getStorageSync('lang') || 'zh';
 			this.lang = this.currentLang === 'zh' ? zh : ru;
+			// 设置页面标题
+			uni.setNavigationBarTitle({
+				title: this.lang.pageTitle.warehouseManagement
+			});
 			
 			console.log("se" + se + name);
 			if (se == '') {

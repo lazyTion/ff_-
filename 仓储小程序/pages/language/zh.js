@@ -1,6 +1,33 @@
 export default {
 	login:"仓储小程序",
 	loginTitle: '登录',
+	
+	// 页面标题
+	pageTitle: {
+		warehouseManagement: "龙江仓库管理",
+		exceptionAdd: "异常新增",
+		exceptionList: "异常信息列表", 
+		loadingQuery: "装卸车查询",
+		detailInfo: "详细信息",
+		palletHandling: "托盘杂物处理",
+		reweigh: "车辆复磅",
+		adjustHandling: "加扣处理",
+		warehouseHandling: "仓库处理",
+		returnCar: "退车处理",
+		factoryVehicleQuery: "在厂车辆查询",
+		testResult: "化验结果",
+		rfidOperation: "RFID操作",
+		rfidCheck: "RFID检查",
+		rfidBindNonWeighing: "非过磅车RFID绑定",
+		rfidException: "RFID异常车辆",
+		rfidVehicleDetail: "RFID车辆详情",
+		tempVehicleReg: "临时车辆登记",
+		transferMark: "转运车辆标记",
+		qrCodeQuery: "二维码查询",
+		tempVehicleView: "临时车辆查看",
+		secondCheck: "二检审核",
+		resetPassword: "修改密码"
+	},
 	usernamePlaceholder: '请输入用户名',
 	passwordPlaceholder: '请输入您的登录密码',
 	rememberPwd: '记住密码',
