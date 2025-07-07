@@ -1,0 +1,163 @@
+/* 国际化样式文件 - 支持中俄双语样式切换 */
+
+/* 中文样式 */
+.lang-zh {
+  font-family: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  letter-spacing: 0.5rpx;
+  line-height: 1.4;
+}
+
+.lang-zh .title-text {
+  font-size: 50rpx;
+  font-weight: 600;
+  letter-spacing: 2rpx;
+}
+
+.lang-zh .content-text {
+  font-size: 30rpx;
+  line-height: 1.5;
+  letter-spacing: 0.5rpx;
+}
+
+.lang-zh .button-text {
+  font-size: 34rpx;
+  font-weight: 500;
+  letter-spacing: 1rpx;
+}
+
+.lang-zh .label-text {
+  font-size: 28rpx;
+  line-height: 1.4;
+}
+
+.lang-zh .input-text {
+  font-size: 30rpx;
+  line-height: 1.3;
+}
+
+/* 俄文样式 */
+.lang-ru {
+  font-family: 'Roboto', 'Arial', 'Helvetica Neue', sans-serif;
+  letter-spacing: 0.2rpx;
+  line-height: 1.5;
+}
+
+.lang-ru .title-text {
+  font-size: 46rpx; /* 稍小以适应更长的文本 */
+  font-weight: 600;
+  letter-spacing: 0.5rpx;
+  line-height: 1.3;
+}
+
+.lang-ru .content-text {
+  font-size: 28rpx; /* 稍小以适应更长的文本 */
+  line-height: 1.6;
+  letter-spacing: 0.2rpx;
+}
+
+.lang-ru .button-text {
+  font-size: 32rpx; /* 稍小以适应更长的文本 */
+  font-weight: 500;
+  letter-spacing: 0.3rpx;
+}
+
+.lang-ru .label-text {
+  font-size: 26rpx; /* 稍小以适应更长的文本 */
+  line-height: 1.5;
+  letter-spacing: 0.2rpx;
+}
+
+.lang-ru .input-text {
+  font-size: 28rpx; /* 稍小以适应更长的文本 */
+  line-height: 1.4;
+}
+
+/* 布局调整 */
+.lang-ru .button {
+  min-width: 700rpx; /* 俄文按钮需要更宽 */
+  padding: 0 40rpx;
+}
+
+.lang-ru .input {
+  min-width: 680rpx; /* 俄文输入框需要更宽 */
+}
+
+.lang-ru .dialog-content {
+  max-width: 600rpx; /* 俄文对话框内容需要更宽 */
+}
+
+/* 特殊组件样式调整 */
+.lang-ru .uni-list-cell-left {
+  min-width: 200rpx; /* 俄文标签可能更长 */
+}
+
+.lang-ru .uni-label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 表格样式调整 */
+.lang-ru .table-header {
+  font-size: 26rpx;
+  padding: 15rpx 10rpx;
+}
+
+.lang-ru .table-cell {
+  font-size: 24rpx;
+  padding: 12rpx 8rpx;
+  word-break: break-word;
+}
+
+/* 导航栏样式调整 */
+.lang-ru .nav-title {
+  font-size: 36rpx;
+  max-width: 500rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 响应式调整 */
+@media screen and (max-width: 750rpx) {
+  .lang-ru .title-text {
+    font-size: 42rpx;
+  }
+  
+  .lang-ru .content-text {
+    font-size: 26rpx;
+  }
+  
+  .lang-ru .button {
+    min-width: 600rpx;
+  }
+}
+
+/* 动画过渡效果 */
+.lang-transition {
+  transition: all 0.3s ease-in-out;
+}
+
+.lang-transition .title-text,
+.lang-transition .content-text,
+.lang-transition .button-text,
+.lang-transition .label-text,
+.lang-transition .input-text {
+  transition: font-size 0.3s ease-in-out, letter-spacing 0.3s ease-in-out, line-height 0.3s ease-in-out;
+}
+
+/* 特定页面样式调整 */
+.page-login.lang-ru .login-title {
+  font-size: 44rpx;
+  margin-bottom: 30rpx;
+}
+
+.page-index.lang-ru .menu-item-text {
+  font-size: 26rpx;
+  line-height: 1.4;
+}
+
+.page-rfid.lang-ru .scan-button {
+  min-width: 200rpx;
+  font-size: 28rpx;
+}

@@ -1,5 +1,5 @@
 <template>
-	<view class="container">
+	<view class="container" :class="languageClass">
 		<view class="bg bg-color-base margin-b20"></view>
 
 		<view class="tab vs-row vs-align-center">
@@ -7,7 +7,7 @@
 
 			<view class="vs-row vs-align-center">
 				<view class="vs-column vs-align-center margin-r40">
-					<text class="font-50 margin-b20" :class="color - black - 3">{{ lang.loginTitle }}</text>
+					<text class="title-text margin-b20" :class="color - black - 3">{{ lang.loginTitle }}</text>
 					<view class="line bg-color-base"></view>
 				</view>
 			</view>
@@ -16,20 +16,20 @@
 			<view class="login margin-b80">
 				<view class="input vs-row vs-align-center margin-b40">
 					<image class="input-icon margin-r20" src="/static/account.png" mode=""></image>
-					<input class="vs-flex-item color-base font-30" v-model="name" type="text" :maxlength="11" :placeholder="lang.usernamePlaceholder" placeholder-class="input-placeholder" />
+					<input class="vs-flex-item color-base input-text" v-model="name" type="text" :maxlength="11" :placeholder="lang.usernamePlaceholder" placeholder-class="input-placeholder" />
 				</view>
 				<view class="input vs-row vs-align-center margin-b40">
 					<image class="input-icon margin-r20" src="/static/password.png" mode=""></image>
-					<input v-model="pwd" class="vs-flex-item color-base font-30" type="text" password :placeholder="lang.passwordPlaceholder" placeholder-class="input-placeholder" />
+					<input v-model="pwd" class="vs-flex-item color-base input-text" type="text" password :placeholder="lang.passwordPlaceholder" placeholder-class="input-placeholder" />
 				</view>
 				<view class="remember vs-row vs-align-center" style="left: 10px;">
 				  <checkbox :value="remember" :checked="rememberPwd" @click="toggleRememberPwd" />
-				  <text class="color-base font-28">{{ lang.rememberPwd }}</text>
+				  <text class="color-base label-text">{{ lang.rememberPwd }}</text>
 				</view>
 			</view>
 
 			<view class="button bg-color-base vs-row vs-align-center vs-space-center margin-b20" @tap="bindLogin">
-				<text form-type="submit" class="color-white font-34">{{ lang.loginButton }}</text>
+				<text form-type="submit" class="color-white button-text">{{ lang.loginButton }}</text>
 				<xy-dialog :title="lang.dialogTitle" :content="lang.dialogContent" :show="showloginSuccess" :isShowCancel="!showloginSuccess"></xy-dialog>
 			</view>
 			<!-- 语言切换器 - 保持原有样式不变 -->
@@ -50,6 +50,7 @@ import xyDialog from '@/components/xy-dialog/xy-dialog.vue';
 // 使用相对路径导入语言资源
 import zh from '../language/zh.js';
 import ru from '../language/ru.js';
+import { getLanguageClass, getResponsiveFontSize, getResponsiveWidth } from '@/utils/i18n.js';
 
 export default {
 	components: { xyDialog },
@@ -60,13 +61,15 @@ export default {
 			rememberPwd: false,
 			showloginSuccess: false,
 			currentLang: 'zh',
-			lang: zh
+			lang: zh,
+			languageClass: 'lang-zh lang-transition page-login'
 		};
 	},
 	onLoad() {
 		// 初始化语言
 		this.currentLang = uni.getStorageSync('lang') || 'zh';
 		this.lang = this.currentLang === 'zh' ? zh : ru;
+		this.languageClass = getLanguageClass(this.currentLang, 'page-login');
 		uni.setNavigationBarTitle({
 		    title: this.lang.login
 		});
@@ -81,6 +84,7 @@ export default {
 	onShow() {
 		this.currentLang = uni.getStorageSync('lang') || 'zh';
 		this.lang = this.currentLang === 'zh' ? zh : ru;
+		this.languageClass = getLanguageClass(this.currentLang, 'page-login');
 		uni.setNavigationBarTitle({
 		    title: this.lang.login
 		});
@@ -147,16 +151,34 @@ export default {
 			
 			this.currentLang = lang;
 			this.lang = lang === 'zh' ? zh : ru;
+			this.languageClass = getLanguageClass(lang, 'page-login');
 			uni.setStorageSync('lang', lang);
 			uni.setNavigationBarTitle({
 			    title: this.lang.login
 			});
+		},
+		
+		// 获取输入框样式
+		getInputStyle() {
+			return {
+				width: getResponsiveWidth('630rpx', this.currentLang)
+			};
+		},
+		
+		// 获取按钮样式
+		getButtonStyle() {
+			return {
+				width: getResponsiveWidth('630rpx', this.currentLang)
+			};
 		}
 	}
 };
 </script>
 
 <style lang="scss">
+/* 导入国际化样式 */
+@import '@/styles/i18n-styles.css';
+
 /* 完全保留原始样式 */
 .container {
 	position: relative;
