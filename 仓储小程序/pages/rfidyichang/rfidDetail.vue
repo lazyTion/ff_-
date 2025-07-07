@@ -4,22 +4,14 @@
       <view class="detail-label">车号：</view>
       <view class="detail-value">{{ cphValue }}</view>
     </view>
-    <view class="detail-item">
       <view class="detail-label">RFID：</view>
       <view class="detail-value">{{ rfidValue }}</view>
-    </view>
-    <view class="detail-item">
       <view class="detail-label">称重编号：</view>
       <view class="detail-value">{{ czbhValue }}</view>
-    </view>
-    <view class="detail-item">
       <view class="detail-label">状态：</view>
       <view class="detail-value">{{ statusValue }}</view>
-    </view>
-    <view class="detail-item">
       <view class="detail-label">行驶路径：</view>
       <view class="detail-value">{{ xsljValue }}</view>
-    </view>
     <!-- 其他车辆信息 -->
   </view>
 </template>
@@ -39,7 +31,6 @@ export default {
   onLoad(query) {
     this.czbh = query.czbh; // 获取页面导航参数中的id
     this.getVehicleDetail(this.czbh);
-  },
   methods: {
     // 根据唯一标识符获取车辆详细信息的方法
     getVehicleDetail(czbh) {
@@ -58,7 +49,6 @@ export default {
           method: 'POST',
           header: {
             'Content-Type': 'application/x-www-form-urlencoded'
-          },
           success: function (res) {
             uni.hideLoading();
             console.log(res.data);
@@ -98,7 +88,6 @@ export default {
                 icon: 'none'
               });
             }
-          },
           fail: function (res) {
             console.log(res);
           }
@@ -107,23 +96,17 @@ export default {
           uni.hideLoading();
         }, 2000);
       },
-  },
 };
 </script>
-
 <style>
 .detail-item {
   display: flex;
   padding: 10px;
   border-bottom: 1px solid #eee;
 }
-
 .detail-label {
   width: 80px;
   font-weight: bold;
-}
-
 .detail-value {
   flex: 1;
-}
 </style>

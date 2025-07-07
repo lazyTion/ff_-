@@ -1,9 +1,9 @@
 <template>
-  <view class="content">
+  <view class="content" :class="languageClass">
     <view class="btnss">
-      <button class="btn1" @click="onclick(0)">{{lang.pendingEntry}}</button>
-      <button class="btn2" @click="onclick(1)">{{lang.entered}}</button>
-      <button class="btn3" @click="onclick(2)">{{lang.completed}}</button>
+      <button class="btn1 button-text" @click="onclick(0)">{{lang.pendingEntry}}</button>
+      <button class="btn2 button-text" @click="onclick(1)">{{lang.entered}}</button>
+      <button class="btn3 button-text" @click="onclick(2)">{{lang.completed}}</button>
     </view>
     
     <view class="uni-list" v-for="(item, index) in info" :key="index">
@@ -13,9 +13,7 @@
         </view>
         <view class="uni-list-cell-navigate uni-navigate-right">
           {{lang.status}}：{{item.gbzt}}
-        </view>
       </view>
-    </view>
   </view>
 </template>
 
@@ -23,12 +21,14 @@
 	
 	import zh from '../language/zh.js';
 	import ru from '../language/ru.js';
+import { getLanguageClass } from '@/utils/i18n.js';
 	export default {
 		data() {
 			return {
 				info:null,
 				currentLang: 'zh', // 当前语言
 				lang: zh ,// 语言资源对象
+				languageClass: 'lang-zh lang-transition page-lsclcx'
 			}
 		},
 		onLoad(options) {
@@ -37,7 +37,7 @@
 		  // 查看是否授权
 		this.currentLang = uni.getStorageSync('lang') || 'zh';
 			this.lang = this.currentLang === 'zh' ? zh : ru;
-		  var that = this;
+			this.languageClass = getLanguageClass(this.currentLang, 'page-lsclcx');
 		  that.name = uni.getStorageSync('name');
 		    wx.request({
 		      
@@ -50,7 +50,6 @@
 		      method: 'POST',
 		      header: {
 		        'Content-Type': 'application/x-www-form-urlencoded'
-		      },
 		      success: res => {
 		        console.log(getApp().globalData.sessionid);
 		        var jsonStr = res.data;
@@ -82,20 +81,14 @@
 		            }else{
 		              getApp().globalData.info = jsonStr;
 		            }
-		          }
 				  this.info=getApp().globalData.info;
 				  console.log(this.info);
-		      },
 		      fail: function (res) {
 		        console.log(res);
 		      }
 		
 		    })
-		
 		 
-		 
-		},
-		
 		methods: {
 			onclick(ou){
 				 var that = this;
@@ -114,7 +107,6 @@
 				   method: 'POST',
 				   header: {
 				     'Content-Type': 'application/x-www-form-urlencoded'
-				   },
 				   success: res => {
 				     console.log(getApp().globalData.sessionid);
 				     var jsonStr = res.data;
@@ -146,10 +138,8 @@
 				         }else{
 				           getApp().globalData.info = jsonStr;
 				         }
-				       }
 				 								  this.info=getApp().globalData.info;
 				 								  console.log(this.info);
-				   },
 				   fail: function (res) {
 				     console.log(res);
 				   }
@@ -165,12 +155,12 @@
 			 wx.navigateTo({
 			     url: '../erwm/erwm?cph=' +cph+ '&czbh=' + czbh
 			})
-			},
 		}
 	}
 </script>
-
 <style>
+/* 导入国际化样式 */
+@import '@/styles/i18n-styles.css';
 .btnss{
 	width: 100%;
 }
@@ -179,17 +169,6 @@
 	background-color: aqua;
 	border: 3px;
 	width: 30;
-}
 .btn2{
-	float: left;
-	background-color: aqua;
-	border: 3px;
-	width: 30;
-}
 .btn3{
-	float: left;
-	background-color: aqua;
-	border: 3px;
-	width: 30;
-}
 </style>
