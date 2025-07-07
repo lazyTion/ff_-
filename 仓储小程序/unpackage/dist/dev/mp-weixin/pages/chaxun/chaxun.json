@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "装卸车查询",
+  "navigationBarBackgroundColor": "#5064eb",
+  "usingComponents": {
+    "mx-date-picker": "/components/mx-datepicker/mx-datepicker",
+    "v-table": "/components/no-bad-table/table"
+  }
+}

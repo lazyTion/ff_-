@@ -1,0 +1,1 @@
+<view class="container"><view><view class="cph">{{"车牌号为："+cph}}</view><canvas style="background:#fff;width:200px;height:200px;" canvas-id="canvas" onclick="{{$root.m0}}"></canvas></view></view>

@@ -1,0 +1,256 @@
+<template>
+	<view class="container">
+		<view class="bg bg-color-base margin-b20"></view>
+
+		<view class="tab vs-row vs-align-center">
+			<image class="tab-bg" src="/static/banner-icon.png" mode=""></image>
+
+			<view class="vs-row vs-align-center">
+				<view class="vs-column vs-align-center margin-r40">
+					<text class="font-50 margin-b20" :class="color - black - 3">{{ lang.loginTitle }}</text>
+					<view class="line bg-color-base"></view>
+				</view>
+			</view>
+		</view>
+		<view>
+			<view class="login margin-b80">
+				<view class="input vs-row vs-align-center margin-b40">
+					<image class="input-icon margin-r20" src="/static/account.png" mode=""></image>
+					<input class="vs-flex-item color-base font-30" v-model="name" type="text" :maxlength="11" :placeholder="lang.usernamePlaceholder" placeholder-class="input-placeholder" />
+				</view>
+				<view class="input vs-row vs-align-center margin-b40">
+					<image class="input-icon margin-r20" src="/static/password.png" mode=""></image>
+					<input v-model="pwd" class="vs-flex-item color-base font-30" type="text" password :placeholder="lang.passwordPlaceholder" placeholder-class="input-placeholder" />
+				</view>
+				<view class="remember vs-row vs-align-center" style="left: 10px;">
+				  <checkbox :value="remember" :checked="rememberPwd" @click="toggleRememberPwd" />
+				  <text class="color-base font-28">{{ lang.rememberPwd }}</text>
+				</view>
+			</view>
+
+			<view class="button bg-color-base vs-row vs-align-center vs-space-center margin-b20" @tap="bindLogin">
+				<text form-type="submit" class="color-white font-34">{{ lang.loginButton }}</text>
+				<xy-dialog :title="lang.dialogTitle" :content="lang.dialogContent" :show="showloginSuccess" :isShowCancel="!showloginSuccess"></xy-dialog>
+			</view>
+			<!-- 语言切换器 - 保持原有样式不变 -->
+			<view class="vs-row vs-align-center vs-space-center margin-b100">
+				<button class="lang-btn" :class="{active: currentLang === 'zh'}" @click="switchLanguage('zh')">
+					<text>{{ lang.zhBtn }}</text>
+				</button>
+				<button class="lang-btn" :class="{active: currentLang === 'ru'}" @click="switchLanguage('ru')">
+					<text>{{ lang.ruBtn }}</text>
+				</button>
+			</view>
+		</view>
+	</view>
+</template>
+
+<script>
+import xyDialog from '@/components/xy-dialog/xy-dialog.vue';
+// 使用相对路径导入语言资源
+import zh from '../language/zh.js';
+import ru from '../language/ru.js';
+
+export default {
+	components: { xyDialog },
+	data() {
+		return {
+			name: '',
+			pwd: '',
+			rememberPwd: false,
+			showloginSuccess: false,
+			currentLang: 'zh',
+			lang: zh
+		};
+	},
+	onLoad() {
+		// 初始化语言
+		this.currentLang = uni.getStorageSync('lang') || 'zh';
+		this.lang = this.currentLang === 'zh' ? zh : ru;
+		uni.setNavigationBarTitle({
+		    title: this.lang.login
+		});
+		// 初始化用户数据
+		if (!uni.getStorageSync("rempwd")) {
+			uni.clearStorageSync();
+		}
+		this.name = uni.getStorageSync("name") || '';
+		this.pwd = uni.getStorageSync("pwd") || '';
+		this.rememberPwd = uni.getStorageSync('rempwd') || false;
+	},
+	onShow() {
+		this.currentLang = uni.getStorageSync('lang') || 'zh';
+		this.lang = this.currentLang === 'zh' ? zh : ru;
+		uni.setNavigationBarTitle({
+		    title: this.lang.login
+		});
+	},
+	methods: {
+		bindLogin() {
+			const that = this;
+			const { name, pwd, currentLang } = this;
+			
+			uni.request({
+				url: getApp().globalData.url + 'login/login.php',
+				method: 'POST',
+				data: { name, pwd, lang: currentLang },
+				header: { 'Content-Type': 'application/x-www-form-urlencoded' },
+				success: (res) => {
+					let jsonStr = res.data;
+					
+					if (typeof jsonStr !== 'object') {
+						jsonStr = jsonStr.replace(/\ufeff/g, '');
+						jsonStr = JSON.parse(jsonStr);
+					}
+					
+					const { flag, sessionid, msg, name: username } = jsonStr;
+					
+					if (flag.toString().trim() !== 'false') {
+						uni.showToast({
+							title: this.lang.loginSuccess,
+							icon: 'none'
+						});
+
+						// 保存用户信息
+						uni.setStorageSync("name", name);
+						uni.setStorageSync("pwd", pwd);
+						uni.setStorageSync("rempwd", this.rememberPwd);
+						uni.setStorageSync('username', username);
+						uni.setStorageSync('sessionid', sessionid);
+						
+						// 跳转页面
+						uni.redirectTo({
+							url: '../index/index'
+						});
+					} else {
+						uni.showToast({
+							title: msg,
+							icon: 'none'
+						});
+					}
+				},
+				fail: (err) => {
+					uni.showToast({
+						title: this.lang.networkError,
+						icon: 'none'
+					});
+				}
+			});
+		},
+		
+		toggleRememberPwd() {
+			this.rememberPwd = !this.rememberPwd;
+		},
+		
+		switchLanguage(lang) {
+			if (this.currentLang === lang) return;
+			
+			this.currentLang = lang;
+			this.lang = lang === 'zh' ? zh : ru;
+			uni.setStorageSync('lang', lang);
+			uni.setNavigationBarTitle({
+			    title: this.lang.login
+			});
+		}
+	}
+};
+</script>
+
+<style lang="scss">
+/* 完全保留原始样式 */
+.container {
+	position: relative;
+}
+
+.bg {
+	position: relative;
+	width: 750rpx;
+	height: 400rpx;
+}
+
+.tab {
+	position: absolute;
+	top: 250rpx;
+	left: 20rpx;
+	right: 20rpx;
+	height: 150rpx;
+	padding: 0 50rpx;
+	background-color: #fff;
+	border-top-left-radius: 20rpx;
+	border-top-right-radius: 20rpx;
+
+	&-bg {
+		position: absolute;
+		top: -200rpx;
+		right: -50rpx;
+		width: 440rpx;
+		height: 285rpx;
+	}
+}
+
+.line {
+	width: 25rpx;
+	height: 7rpx;
+}
+
+.login,
+.register {
+	padding: 0 60rpx;
+}
+
+.input {
+	width: 630rpx;
+	height: 90rpx;
+	padding: 0 30rpx;
+	background-color: rgba(80, 100, 235, 0.1);
+	border-radius: 50%;
+
+	&-icon {
+		width: 30rpx;
+		height: 38rpx;
+	}
+
+	&-placeholder {
+		color: #5064eb;
+	}
+}
+
+.button {
+	width: 630rpx;
+	height: 90rpx;
+	margin-left: 60rpx;
+	border-radius: 50%;
+}
+
+.separator {
+	height: 2rpx;
+	margin: 0 30rpx;
+	background-color: #f5f5f5;
+}
+
+.other {
+	&-items {
+		padding: 0 200rpx;
+	}
+
+	&-icon {
+		width: 50rpx;
+		height: 50rpx;
+	}
+}
+
+/* 语言按钮样式 - 与"忘记密码"样式保持一致 */
+.lang-btn {
+	background: none;
+	border: none;
+	padding: 0;
+	margin: 0 20rpx;
+	font-size: 28rpx;
+	color: #5064eb;
+	
+	&.active {
+		font-weight: bold;
+		text-decoration: underline;
+	}
+}
+</style>

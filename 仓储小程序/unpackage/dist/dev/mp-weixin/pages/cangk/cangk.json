@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "仓库处理",
+  "navigationBarBackgroundColor": "#5064eb",
+  "usingComponents": {
+    "uni-combox": "/uni_modules/uni-combox/components/uni-combox/uni-combox",
+    "uni-list": "/components/uni-list/uni-list",
+    "uni-list-item": "/components/uni-list-item/uni-list-item"
+  }
+}

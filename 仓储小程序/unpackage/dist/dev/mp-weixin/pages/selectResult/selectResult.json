@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "化验结果",
+  "navigationBarBackgroundColor": "#5064eb",
+  "usingComponents": {
+    "uni-section": "/components/uni-section/uni-section",
+    "uni-grid": "/components/uni-grid/uni-grid",
+    "uni-grid-item": "/components/uni-grid-item/uni-grid-item"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "车辆复磅",
+  "navigationBarBackgroundColor": "#5064eb",
+  "usingComponents": {
+    "uni-list": "/components/uni-list/uni-list",
+    "uni-list-item": "/components/uni-list-item/uni-list-item"
+  }
+}

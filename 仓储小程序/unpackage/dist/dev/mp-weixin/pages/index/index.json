@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "龙江仓库管理",
+  "navigationBarBackgroundColor": "#5064eb",
+  "usingComponents": {
+    "cmd-cell-item": "/components/cmd-cell-item/cmd-cell-item",
+    "cmd-icon": "/components/cmd-icon/cmd-icon",
+    "cmd-avatar": "/components/cmd-avatar/cmd-avatar"
+  }
+}

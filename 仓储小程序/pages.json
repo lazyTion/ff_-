@@ -1,0 +1,186 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/login/login",
+			"style": {
+				"navigationBarTitleText": "龙江仓库管理",
+				"navigationBarBackgroundColor": "#5064eb"
+			}
+		},{
+		    "path" : "pages/addyc/addyc",
+		    "style" : {"navigationBarTitleText": "异常新增",
+				"navigationBarBackgroundColor": "#5064eb"}
+		},{
+		    "path" : "pages/yichang/yichang",
+		    "style" : {
+				"navigationBarTitleText": "异常信息列表",
+				"navigationBarBackgroundColor": "#5064eb"
+			}
+		},{
+		    "path" : "pages/chaxun/chaxun",
+		    "style" : {
+				"navigationBarTitleText": "装卸车查询",
+				"navigationBarBackgroundColor": "#5064eb"
+			}
+		},{
+		    "path" : "pages/cxdetail/cxdetail",
+		    "style" : {"navigationBarTitleText": "详细信息",
+				"navigationBarBackgroundColor": "#5064eb"}
+		},{
+		    "path" : "pages/index/index",
+		    "style" : {
+				"navigationBarTitleText": "龙江仓库管理",
+				"navigationBarBackgroundColor": "#5064eb"
+			}
+		  },{
+		    "path" : "pages/tuopan/tuopan",
+		    "style" : {"navigationBarTitleText": "托盘杂物处理",
+				"navigationBarBackgroundColor": "#5064eb"}
+		},{
+		    "path" : "pages/clfb/clfb",
+		    "style" : {
+				"navigationBarTitleText": "车辆复磅",
+					"navigationBarBackgroundColor": "#5064eb"
+			}
+		},{
+		    "path" : "pages/jiakou/jiakou",
+		    "style" : {
+				"navigationBarTitleText": "加扣处理",
+				"navigationBarBackgroundColor": "#5064eb"
+			}
+			
+		},{
+		    "path" : "pages/cangk/cangk", 
+		    "style" : {
+				"navigationBarTitleText": "仓库处理",
+				"navigationBarBackgroundColor": "#5064eb"
+			}
+		},{
+		    "path" : "pages/tuiche/tuiche",
+		    "style" : {
+				"navigationBarTitleText": "退车处理",
+				"navigationBarBackgroundColor": "#5064eb"
+			}
+		},{
+		    "path" : "pages/selectCard/selectCard",
+		    "style" : { 
+				"navigationBarTitleText": "在厂车辆查询",
+				"navigationBarBackgroundColor": "#5064eb"
+			}
+		},{
+		    "path" : "pages/selectResult/selectResult",
+		    "style" : {
+				"navigationBarTitleText": "化验结果",
+				"navigationBarBackgroundColor": "#5064eb"
+			}
+		},
+		{
+			"path" : "pages/rfid/rfid",
+			"style" : 
+			{
+				"navigationBarTitleText" : "RFID操作",
+				"navigationBarBackgroundColor": "#5064eb"
+			}
+		},
+		{
+			"path" : "pages/rfidCheck/rfidCheck",
+			"style" : 
+			{
+				"navigationBarTitleText" : "RFID检查",
+				"navigationBarBackgroundColor": "#5064eb"
+			}
+		},
+		{
+		    "path" : "pages/rfidDes/rfidDes",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "非过磅车RFID绑定",
+		        "navigationBarBackgroundColor": "#5064eb"
+		    }  
+		},
+		{
+			"path" : "pages/rfidyichang/rfidyichang",
+			"style" : 
+			{
+				"navigationBarTitleText" : "RFID异常车辆",
+				"navigationBarBackgroundColor": "#5064eb"
+			}
+		},
+		{
+			"path" : "pages/rfidyichang/rfidDetail",
+			"style" : 
+			{
+				"navigationBarTitleText" : "RFID车辆详情",
+				"navigationBarBackgroundColor": "#5064eb"
+			}
+		},
+		{
+			"path" : "pages/cheliang/cheliang",
+			"style" : 
+			{
+				"navigationBarTitleText" : "临时车辆登记",
+				"navigationBarBackgroundColor": "#5064eb"
+			}
+		},
+		{
+			"path" : "pages/zhuanchang/zhuanchang",
+			"style" : 
+			{
+				"navigationBarTitleText" : "转运车辆标记",
+				"navigationBarBackgroundColor": "#5064eb"
+			}
+		},
+		{
+			"path" : "pages/erwm/erwm",
+			"style" : 
+			{
+				"navigationBarTitleText" : "二维码查询",
+				"navigationBarBackgroundColor": "#5064eb"
+			}
+		},
+		{
+			"path" : "pages/lsclcx/lsclcx",
+			"style" : 
+			{
+				"navigationBarTitleText" : "临时车辆查看",
+				"navigationBarBackgroundColor": "#5064eb"
+			}
+		},
+		
+		{
+			"path" : "pages/ajsh/ajsh",
+			"style" : 
+			{
+				"navigationBarTitleText" : "二检审核",
+				"navigationBarBackgroundColor": "#5064eb"
+			}
+		},
+		{
+			"path" : "pages/Updatemi/Updatemi",
+			"style" : 
+			{
+				"navigationBarTitleText" : "修改密码",
+				"navigationBarBackgroundColor": "#5064eb"
+			}
+		}
+
+
+              
+    ],
+	"globalStyle": {
+		"navigationBarTextStyle": "white",
+		"navigationBarTitleText": "查询客户",
+		"navigationBarBackgroundColor": "#fff",
+		"backgroundColor": "#F4F5F6"
+	},
+	"condition" : { //模式配置，仅开发期间生效
+		"current": 0, //当前激活的模式(list 的索引项)
+		"list": [
+			{
+				"name": "", //模式名称
+				"path": "", //启动页面，必选
+				"query": "" //启动参数，在页面的onLoad函数里面得到
+			}
+		]
+	}
+}

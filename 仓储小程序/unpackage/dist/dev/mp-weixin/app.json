@@ -1,0 +1,36 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/addyc/addyc",
+    "pages/yichang/yichang",
+    "pages/chaxun/chaxun",
+    "pages/cxdetail/cxdetail",
+    "pages/index/index",
+    "pages/tuopan/tuopan",
+    "pages/clfb/clfb",
+    "pages/jiakou/jiakou",
+    "pages/cangk/cangk",
+    "pages/tuiche/tuiche",
+    "pages/selectCard/selectCard",
+    "pages/selectResult/selectResult",
+    "pages/rfid/rfid",
+    "pages/rfidCheck/rfidCheck",
+    "pages/rfidDes/rfidDes",
+    "pages/rfidyichang/rfidyichang",
+    "pages/rfidyichang/rfidDetail",
+    "pages/cheliang/cheliang",
+    "pages/zhuanchang/zhuanchang",
+    "pages/erwm/erwm",
+    "pages/lsclcx/lsclcx",
+    "pages/ajsh/ajsh",
+    "pages/Updatemi/Updatemi"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "查询客户",
+    "navigationBarBackgroundColor": "#fff",
+    "backgroundColor": "#F4F5F6"
+  },
+  "usingComponents": {}
+}

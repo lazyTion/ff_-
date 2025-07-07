@@ -1,0 +1,55 @@
+{
+  "pages": [
+    "pages/default/default",
+    "pages/adresslist/adresslist",
+    "pages/denglu/denglu",
+    "pages/Mine/Mine",
+    "pages/showData/showData",
+    "pages/dataList/dataList",
+    "pages/insertInfo/insertInfo",
+    "pages/insertInfoJia/insertInfoJia",
+    "pages/login/login",
+    "pages/ewm/ewm",
+    "pages/index/index",
+    "pages/form/form",
+    "pages/forminfo/forminfo",
+    "pages/logs/logs",
+    "pages/zzck/zzck",
+    "pages/zzrk/zzrk",
+    "pages/ddlm/ddlm",
+    "pages/Updatemi/updatemi",
+    "pages/ghflist/ghflist",
+    "pages/cyslist/cyslist",
+    "pages/chexclist/chexclist",
+    "pages/accord/accord"
+  ],
+  "window": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "龙江司机端小程序",
+    "navigationBarBackgroundColor": "#007AFF",
+    "backgroundColor": "#F8F8F8",
+    "backgroundColorTop": "#F4F5F6",
+    "backgroundColorBottom": "#F4F5F6"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#007AFF",
+    "borderStyle": "black",
+    "backgroundColor": "#F8F8F8",
+    "list": [
+      {
+        "pagePath": "pages/default/default",
+        "iconPath": "pic/home_gray3x.png",
+        "selectedIconPath": "pic/home_blue3x.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/denglu/denglu",
+        "iconPath": "pic/people_gray3x.png",
+        "selectedIconPath": "pic/people_blue3x.png",
+        "text": "个人中心"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

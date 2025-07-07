@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "龙江仓库管理",
+  "navigationBarBackgroundColor": "#5064eb",
+  "usingComponents": {
+    "xy-dialog": "/components/xy-dialog/xy-dialog"
+  }
+}
